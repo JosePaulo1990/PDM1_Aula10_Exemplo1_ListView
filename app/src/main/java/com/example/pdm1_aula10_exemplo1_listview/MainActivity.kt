@@ -1,18 +1,11 @@
 package com.example.pdm1_aula10_exemplo1_listview
 
+import android.R
 import android.os.Bundle
+import android.widget.ArrayAdapter
 import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
-import androidx.activity.enableEdgeToEdge
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import com.example.pdm1_aula10_exemplo1_listview.databinding.ActivityMainBinding
-import com.example.pdm1_aula10_exemplo1_listview.ui.theme.PDM1_Aula10_Exemplo1_ListViewTheme
+import com.example.pdm1_aula10_exemplo1_listview.entities.Team
 
 class MainActivity : ComponentActivity() {
 
@@ -22,5 +15,23 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        val teams = arrayOf(
+            Team("McLaren", "Reino Unido"),
+            Team("Ferrari", "Itália"),
+            Team("Red Bull", "Áustria"),
+            Team("Mercedes", "Alemanha"),
+            Team("Aston Martin", "Reino Unido"),
+            Team("Alpine", "França"),
+            Team("Haas", "Estados Unidos"),
+            Team("Racing Bulls", "Itália"),
+            Team("Williams", "Reino Unido"),
+            Team("Sauber", "Suíça")
+        )
+
+        val teamListView = binding.listView
+        val adapter = ArrayAdapter(this, R.layout.simple_list_item_1, teams)
+        teamListView.adapter = adapter
+
     }
 }
